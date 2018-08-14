@@ -1,0 +1,31 @@
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "frontend.fullname" . }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+spec:
+  tls:
+  - hosts:
+    - www.needpc.fr
+    - m.needpc.fr
+    # secretName: letsencrypt-prod
+  rules:
+  - host: www.needpc.fr
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ template "frontend.fullname" . }}
+          servicePort: 80
+  - host: m.needpc.fr
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ template "frontend.fullname" . }}
+          servicePort: 80

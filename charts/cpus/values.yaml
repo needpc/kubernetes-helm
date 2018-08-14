@@ -1,0 +1,53 @@
+# Default values for cpus.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# HPA
+minReplicaCount: 1
+maxReplicaCount: 2
+
+# Namespace
+namespace: needpc-api
+
+# Deployment
+cpus:
+  hostname: cpus
+  repository: quay.io/needpc/needpc-api-cpus
+  tag: 0.0.2
+  pullPolicy: Always
+  environment: production
+  registry: needpc-k8s-pull-secret
+
+redis:
+  hostname: redis
+  repository: redis
+  tag: 4.0-alpine
+  pullPolicy: IfNotPresent
+
+# Service
+service:
+  type: ClusterIP
+  containerPort: 3000
+  port: 80
+
+cpus_resources:
+  limits:
+   cpu: 100m
+   memory: 128Mi
+  requests:
+   cpu: 100m
+   memory: 64Mi
+
+redis_resources:
+  limits:
+   cpu: 100m
+   memory: 128Mi
+  requests:
+   cpu: 100m
+   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

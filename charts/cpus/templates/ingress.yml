@@ -1,0 +1,25 @@
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "cpus.fullname" . }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://www.needpc.fr,https://m.needpc.fr"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "HEAD, GET"
+spec:
+  tls:
+  - hosts:
+    - api.needpc.fr
+  rules:
+  - host: api.needpc.fr
+    http:
+      paths:
+      - path: /v1/search/cpu
+        backend:
+          serviceName: {{ template "cpus.fullname" . }}
+          servicePort: 80
