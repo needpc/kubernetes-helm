@@ -2,11 +2,6 @@
 
 # K8S 1.[10-11].X
 
-# VARS DOCKER REGISTRY / KUBERNETES
-DOCKER_HOST=quay.io
-DOCKER_USERNAME=a.perrier89@gmail.com
-DOCKER_PASSWORD=YuEyK7geWEKsCTjw
-
 # NAMESPACES
 NAMESPACE_SYSTEM=kube-system
 NAMESPACE_MONITORING=monitoring
@@ -45,4 +40,3 @@ helm install ./charts/computers  --name computers --namespace ${NAMESPACE_APP}
 helm install ./charts/cpus  --name cpus --namespace ${NAMESPACE_APP}
 helm install ./charts/gpus  --name gpus --namespace ${NAMESPACE_APP}
 helm install ./charts/frontend  --name frontend --namespace ${NAMESPACE_APP}
-
