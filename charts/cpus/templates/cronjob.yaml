@@ -1,0 +1,19 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: scrap-cpu
+spec:
+  schedule: "20 4 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: regcred
+          containers:
+          - name: needpc-scrap-cpu
+            image: quay.io/perriea/needpc-scrap:0.0.1
+            command:
+            - scrap:cpu --trace
+          restartPolicy: OnFailure

@@ -1,0 +1,109 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "cpus.fullname" . }}
+  labels:
+    app: {{ template "cpus.name" . }}
+    chart: {{ template "cpus.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "cpus.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "cpus.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          hostname: {{ .Values.cpus.hostname }}
+          image: "{{ .Values.cpus.repository }}:{{ .Values.cpus.tag }}"
+          imagePullPolicy: {{ .Values.cpus.pullPolicy }}
+          imagePullSecrets:
+          - name: {{ .Values.cpus.registry }}
+          env:
+          - name: DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: database-config
+                key: database
+          - name: DATABASE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: database-config
+                key: username
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: database-config
+                key: password
+          - name: DATABASE_HOST
+            valueFrom:
+              secretKeyRef:
+                name: database-config
+                key: host
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.containerPort }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.service.containerPort }}
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.service.containerPort }}
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+            periodSeconds: 10
+          resources:
+{{ toYaml .Values.cpus_resources | indent 12 }}
+
+        - name: {{ .Values.redis.hostname }}
+          hostname: {{ .Values.redis.hostname }}
+          image: "{{ .Values.redis.repository }}:{{ .Values.redis.tag }}"
+          imagePullPolicy: {{ .Values.redis.pullPolicy }}
+          ports:
+            - name: {{ .Values.redis.hostname }}
+              containerPort: 6379
+              protocol: TCP
+          resources:
+{{ toYaml .Values.redis_resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+---
+
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ template "cpus.fullname" . }}
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: {{ template "cpus.fullname" . }}
+  minReplicas: {{ .Values.minReplicaCount }}
+  maxReplicas: {{ .Values.maxReplicaCount }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80

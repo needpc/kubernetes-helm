@@ -1,0 +1,101 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  annotations:
+    prometheus.io/port: "9101"
+    prometheus.io/scrape: "true"
+  name: {{ template "ask.fullname" . }}
+  labels:
+    app: {{ template "ask.name" . }}
+    chart: {{ template "ask.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "ask.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "ask.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          hostname: {{ .Values.ask.hostname }}
+          image: "{{ .Values.ask.repository }}:{{ .Values.ask.tag }}"
+          imagePullPolicy: {{ .Values.ask.pullPolicy }}
+          imagePullSecrets:
+          - name: {{ .Values.ask.registry }}
+          env:
+          - name: DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: database-config
+                key: database
+          - name: DATABASE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: database-config
+                key: username
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: database-config
+                key: password
+          - name: DATABASE_HOST
+            valueFrom:
+              secretKeyRef:
+                name: database-config
+                key: host
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.containerPort }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.service.containerPort }}
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.service.containerPort }}
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+            periodSeconds: 10
+          resources:
+{{ toYaml .Values.ask_resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+---
+
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ template "ask.fullname" . }}
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: {{ template "ask.fullname" . }}
+  minReplicas: {{ .Values.minReplicaCount }}
+  maxReplicas: {{ .Values.maxReplicaCount }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80
