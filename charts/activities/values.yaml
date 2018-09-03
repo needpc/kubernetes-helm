@@ -14,8 +14,7 @@ activities:
   hostname: activities
   repository: quay.io/needpc/needpc-api-activities
   tag: latest
-  pullPolicy: Always
-  environment: production
+  pullPolicy: IfNotPresent
   registry: needpc-k8s-pull-secret
 
 redis:

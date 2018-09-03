@@ -14,8 +14,7 @@ ask:
   hostname: ask
   repository: quay.io/needpc/needpc-api-ask
   tag: 0.0.2
-  pullPolicy: Always
-  environment: production
+  pullPolicy: IfNotPresent
   registry: needpc-k8s-pull-secret
 
 # Service
