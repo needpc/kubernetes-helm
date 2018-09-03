@@ -3,24 +3,19 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ template "gpus.fullname" . }}
+  name: {{ template "ask.fullname" . }}
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-origin: "https://www.needpc.fr,https://m.needpc.fr"
     nginx.ingress.kubernetes.io/cors-allow-methods: "HEAD, GET"
 spec:
-  tls:
-  - hosts:
-    - api.needpc.fr
-    # secretName: letsencrypt-prod
   rules:
   - host: api.needpc.fr
     http:
       paths:
-      - path: /v1/search/gpu
+      - path: /v1/ask
         backend:
-          serviceName: {{ template "gpus.fullname" . }}
+          serviceName: {{ template "ask.fullname" . }}
           servicePort: 80
