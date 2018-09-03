@@ -2,72 +2,72 @@ apiVersion: v1
 entries:
   activities:
   - apiVersion: v1
-    appVersion: "1.0"
-    created: 2018-09-03T21:20:49.629714994+02:00
-    description: A Helm chart for NeedPC API
-    digest: 08360c2968c8d16a3c63a26251f902ef3a8ea7ac7c94fc9fe7e7187f1826d92c
+    appVersion: 0.0.1
+    created: 2018-09-03T22:26:35.20248456+02:00
+    description: NeedPC Activities API
+    digest: 3b55dd887d2b5a741ee4333941894ae9332c97fecd5cbf51b6bcff103e552e43
     name: activities
     urls:
     - https://needpc.github.io/kubernetes-helm/activities-0.2.0.tgz
     version: 0.2.0
   ask:
   - apiVersion: v1
-    appVersion: "1.0"
-    created: 2018-09-03T21:20:49.630235024+02:00
-    description: A Helm chart for NeedPC API
-    digest: bdcfbdefcb053ee897ae8d3e9a92bc7bb5e1d8bd877aee51a3da118184d91ace
+    appVersion: 0.0.1
+    created: 2018-09-03T22:26:35.202753917+02:00
+    description: NeedPC Ask API
+    digest: e2b48e360c94ad4d39ed23bae86c46704eac47ac9a7f29560313cfe5617e2e23
     name: ask
     urls:
     - https://needpc.github.io/kubernetes-helm/ask-0.2.0.tgz
     version: 0.2.0
   brands:
   - apiVersion: v1
-    appVersion: "1.0"
-    created: 2018-09-03T21:20:49.630716801+02:00
-    description: A Helm chart for NeedPC API
-    digest: b7419d7bf85b64595a674cb68b6b7f63778f062a426562c17421595228c57428
+    appVersion: 0.0.1
+    created: 2018-09-03T22:26:35.203015805+02:00
+    description: NeedPC Brands API
+    digest: 167accd481d3050f02361e8153e7303fc1128e069548cda050f6fc5eb1cbe5ea
     name: brands
     urls:
     - https://needpc.github.io/kubernetes-helm/brands-0.2.0.tgz
     version: 0.2.0
   computers:
   - apiVersion: v1
-    appVersion: "1.0"
-    created: 2018-09-03T21:20:49.631258917+02:00
-    description: A Helm chart for NeedPC API
-    digest: 0eb3a97226d730de099d9d4473b5dc393800f8ded377de930a0f56d3a4a0481d
+    appVersion: 0.0.1
+    created: 2018-09-03T22:26:35.203304054+02:00
+    description: NeedPC Computers API
+    digest: 3255fd48f83412a28c520c4bce42c0bcb70c01454fc54dcd9316a5d5ffea2ab3
     name: computers
     urls:
     - https://needpc.github.io/kubernetes-helm/computers-0.2.0.tgz
     version: 0.2.0
   cpus:
   - apiVersion: v1
-    appVersion: "1.0"
-    created: 2018-09-03T21:20:49.631758311+02:00
-    description: A Helm chart for NeedPC API
-    digest: a14cd6a00337a46f45d2a88554ad344a2f88535631db499bda04e4fbaeed9f40
+    appVersion: 0.0.1
+    created: 2018-09-03T22:26:35.203573841+02:00
+    description: NeedPC Cpus API
+    digest: 7ffe9a7fb905babe221fc6bccd9f06c4e07fc2b91939a25d8c48cea0f0200b23
     name: cpus
     urls:
     - https://needpc.github.io/kubernetes-helm/cpus-0.2.0.tgz
     version: 0.2.0
   frontend:
   - apiVersion: v1
-    appVersion: "1.0"
-    created: 2018-09-03T21:20:49.632250946+02:00
-    description: A Helm chart for NeedPC API
-    digest: a978396cfae88ad554d347bdc56a1a28933df8f81a649592ec01718a408dee41
+    appVersion: 0.0.4
+    created: 2018-09-03T22:26:35.203826937+02:00
+    description: NeedPC Frontend
+    digest: 71842af71b7429ff75a84a5edede719c5a846d09795a29c032d609a620acae04
     name: frontend
     urls:
     - https://needpc.github.io/kubernetes-helm/frontend-0.2.0.tgz
     version: 0.2.0
   gpus:
   - apiVersion: v1
-    appVersion: "1.0"
-    created: 2018-09-03T21:20:49.632751133+02:00
-    description: A Helm chart for NeedPC API
-    digest: 15504b4203b4e09670e5bcdf5667b2fe1cc4859259ef308e3f44fde287135d98
+    appVersion: 0.0.1
+    created: 2018-09-03T22:26:35.20409713+02:00
+    description: NeedPC Gpus API
+    digest: 97ece8fc56685e661946daa5612ef7de4b07863029279f9c4a18ea79464e7ea7
     name: gpus
     urls:
     - https://needpc.github.io/kubernetes-helm/gpus-0.2.0.tgz
     version: 0.2.0
-generated: 2018-09-03T21:20:49.627593487+02:00
+generated: 2018-09-03T22:26:35.201945841+02:00
