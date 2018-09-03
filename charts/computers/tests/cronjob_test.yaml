@@ -1,0 +1,25 @@
+suite: test cronjob
+templates:
+  - cronjob.yaml
+tests:
+  - it: should pass all kinds of assertion
+    asserts:
+      - equal:
+          path: spec.jobTemplate.spec.template.spec.containers[0].image
+          value: quay.io/perriea/needpc-scrap:0.0.2
+      - notEqual:
+          path: spec.jobTemplate.spec.template.spec.containers[0].image
+          value: quay.io/perriea/needpc-scrap:latest
+      - matchRegex:
+          path: metadata.name
+          pattern: ^scrap-.*$
+      - isKind:
+          of: CronJob
+      - isNotNull:
+        path: spec.jobTemplate.spec.imagePullSecrets.name
+      - isAPIVersion:
+          of: batch/v1beta1
+      - hasDocuments:
+          count: 3
+      - matchSnapshot:
+          path: spec

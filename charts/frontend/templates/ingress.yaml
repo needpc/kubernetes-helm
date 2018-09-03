@@ -6,14 +6,11 @@ metadata:
   name: {{ template "frontend.fullname" . }}
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "HEAD, GET"
+    nginx.ingress.kubernetes.io/cors-allow-origin: https://www.needpc.fr,https://m.needpc.fr
+    nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
 spec:
-  tls:
-  - hosts:
-    - www.needpc.fr
-    - m.needpc.fr
-    # secretName: letsencrypt-prod
   rules:
   - host: www.needpc.fr
     http:

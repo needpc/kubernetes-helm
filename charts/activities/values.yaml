@@ -13,7 +13,7 @@ namespace: needpc
 activities:
   hostname: activities
   repository: quay.io/needpc/needpc-api-activities
-  tag: latest
+  tag: 0.0.1
   pullPolicy: IfNotPresent
   registry: needpc-k8s-pull-secret
 
