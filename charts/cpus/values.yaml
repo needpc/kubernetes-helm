@@ -14,8 +14,7 @@ cpus:
   hostname: cpus
   repository: quay.io/needpc/needpc-api-cpus
   tag: 0.0.2
-  pullPolicy: Always
-  environment: production
+  pullPolicy: IfNotPresent
   registry: needpc-k8s-pull-secret
 
 redis:
