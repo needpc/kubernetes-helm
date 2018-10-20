@@ -13,7 +13,7 @@ namespace: needpc
 frontend:
   hostname: frontend
   repository: quay.io/needpc/needpc-frontend
-  tag: 0.0.5
+  tag: 0.0.6
   pullPolicy: IfNotPresent
   registry: needpc-k8s-pull-secret
 

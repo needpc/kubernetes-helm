@@ -3,7 +3,7 @@ entries:
   activities:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.977170475+02:00
+    created: 2018-10-20T17:59:43.295556+02:00
     description: NeedPC Activities API
     digest: 5cc92952af17a970b93447800d607f1cdfbf29e12e7f9f4c3a4f386385b2420a
     name: activities
@@ -12,7 +12,7 @@ entries:
     version: 0.2.1
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.976823771+02:00
+    created: 2018-10-20T17:59:43.294983+02:00
     description: NeedPC Activities API
     digest: 3b55dd887d2b5a741ee4333941894ae9332c97fecd5cbf51b6bcff103e552e43
     name: activities
@@ -22,7 +22,7 @@ entries:
   ask:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.977757426+02:00
+    created: 2018-10-20T17:59:43.297968+02:00
     description: NeedPC Ask API
     digest: 17bf265f8b4526db343368982ec8e14d39392738e9610d7f59407b9487e563d2
     name: ask
@@ -31,7 +31,7 @@ entries:
     version: 0.2.1
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.97744187+02:00
+    created: 2018-10-20T17:59:43.297488+02:00
     description: NeedPC Ask API
     digest: e2b48e360c94ad4d39ed23bae86c46704eac47ac9a7f29560313cfe5617e2e23
     name: ask
@@ -41,7 +41,7 @@ entries:
   brands:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.978407544+02:00
+    created: 2018-10-20T17:59:43.298856+02:00
     description: NeedPC Brands API
     digest: 091f4451a1e86310f177fc4ddd010b54b454a02340d180d5ea57c0b0c173b3ed
     name: brands
@@ -50,7 +50,7 @@ entries:
     version: 0.2.1
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.978066526+02:00
+    created: 2018-10-20T17:59:43.298367+02:00
     description: NeedPC Brands API
     digest: 167accd481d3050f02361e8153e7303fc1128e069548cda050f6fc5eb1cbe5ea
     name: brands
@@ -60,7 +60,7 @@ entries:
   computers:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.979083022+02:00
+    created: 2018-10-20T17:59:43.299966+02:00
     description: NeedPC Computers API
     digest: 65a517b1965300c4bcec181e36f05e956fc5ba044719736371db82be254b5c83
     name: computers
@@ -69,7 +69,7 @@ entries:
     version: 0.2.1
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.978714828+02:00
+    created: 2018-10-20T17:59:43.299356+02:00
     description: NeedPC Computers API
     digest: 3255fd48f83412a28c520c4bce42c0bcb70c01454fc54dcd9316a5d5ffea2ab3
     name: computers
@@ -79,7 +79,7 @@ entries:
   cpus:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.979748153+02:00
+    created: 2018-10-20T17:59:43.301207+02:00
     description: NeedPC Cpus API
     digest: ec44c1b737f182ef8ebd1060bef8223d81f0bafbc7f6da944a8cfc857ee378f8
     name: cpus
@@ -88,7 +88,7 @@ entries:
     version: 0.2.1
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.979373524+02:00
+    created: 2018-10-20T17:59:43.300706+02:00
     description: NeedPC Cpus API
     digest: 7ffe9a7fb905babe221fc6bccd9f06c4e07fc2b91939a25d8c48cea0f0200b23
     name: cpus
@@ -97,8 +97,17 @@ entries:
     version: 0.2.0
   frontend:
   - apiVersion: v1
+    appVersion: 0.0.6
+    created: 2018-10-20T17:59:43.303537+02:00
+    description: NeedPC Frontend
+    digest: 2a686790c9190dbea33d204c7081e324f96556c8de638144d4b007b713da8968
+    name: frontend
+    urls:
+    - https://needpc.github.io/kubernetes-helm/frontend-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v1
     appVersion: 0.0.5
-    created: 2018-09-19T00:47:13.980672666+02:00
+    created: 2018-10-20T17:59:43.302979+02:00
     description: NeedPC Frontend
     digest: 1199e3f4e992f38be5822c18ba25d62b62da34bc2a722539963e67ef3e11c24b
     name: frontend
@@ -107,7 +116,7 @@ entries:
     version: 0.2.2
   - apiVersion: v1
     appVersion: 0.0.4
-    created: 2018-09-19T00:47:13.980352621+02:00
+    created: 2018-10-20T17:59:43.302178+02:00
     description: NeedPC Frontend
     digest: 60d95da3faea4dade1a2f0e5ee9513afea9bd856838164bae42f0d7f9b1637ea
     name: frontend
@@ -116,7 +125,7 @@ entries:
     version: 0.2.1
   - apiVersion: v1
     appVersion: 0.0.4
-    created: 2018-09-19T00:47:13.980024842+02:00
+    created: 2018-10-20T17:59:43.301649+02:00
     description: NeedPC Frontend
     digest: 71842af71b7429ff75a84a5edede719c5a846d09795a29c032d609a620acae04
     name: frontend
@@ -126,7 +135,7 @@ entries:
   gpus:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.982448907+02:00
+    created: 2018-10-20T17:59:43.305854+02:00
     description: NeedPC Gpus API
     digest: 6234e1a8e70d80dd8a80c100a53bed6e1a4f598421f079912e006f76711edc04
     name: gpus
@@ -135,11 +144,11 @@ entries:
     version: 0.2.1
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-09-19T00:47:13.981613269+02:00
+    created: 2018-10-20T17:59:43.304014+02:00
     description: NeedPC Gpus API
     digest: 97ece8fc56685e661946daa5612ef7de4b07863029279f9c4a18ea79464e7ea7
     name: gpus
     urls:
     - https://needpc.github.io/kubernetes-helm/gpus-0.2.0.tgz
     version: 0.2.0
-generated: 2018-09-19T00:47:13.976134038+02:00
+generated: 2018-10-20T17:59:43.292639+02:00
