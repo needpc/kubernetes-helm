@@ -13,14 +13,14 @@ namespace: needpc
 computers:
   hostname: computers
   repository: quay.io/needpc/needpc-api-computers
-  tag: 0.0.2
+  tag: 0.0.4
   pullPolicy: IfNotPresent
   registry: needpc-k8s-pull-secret
 
 # Cronjob
 cronjobs:
   repository: quay.io/perriea/needpc-scrap
-  tag: 0.0.2
+  tag: 0.0.3
   pullPolicy: IfNotPresent
   registry: needpc-k8s-pull-secret
 
