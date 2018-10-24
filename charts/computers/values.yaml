@@ -13,7 +13,7 @@ namespace: needpc
 computers:
   hostname: computers
   repository: quay.io/needpc/needpc-api-computers
-  tag: 0.0.4
+  tag: 0.0.5
   pullPolicy: IfNotPresent
   registry: needpc-k8s-pull-secret
 
