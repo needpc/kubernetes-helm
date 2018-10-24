@@ -125,3 +125,45 @@ spec:
                   name: database-config
                   key: host
           restartPolicy: Never
+
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: scrap-materiel
+spec:
+  backoffLimit: 3
+  schedule: "0 6 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: {{ .Values.cronjobs.registry }}
+          containers:
+          - name: needpc-scrap-materiel
+            image: {{ .Values.cronjobs.repository }}:{{ .Values.cronjobs.tag }}
+            command:
+            - scrap:materiel --trace
+            env:
+            - name: DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: database-config
+                  key: database
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: database-config
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-config
+                  key: password
+            - name: DATABASE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: database-config
+                  key: host
+          restartPolicy: Never
